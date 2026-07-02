@@ -38,17 +38,18 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
     }, [lines]);
 
     return (
-        <div className={`${isDark ? "text-[var(--light)]/40" : "text-[var(--dark)]/40"}
+        <div className={`
             ${isMobile? "" : " max-w-[68%]"}
             h-auto w-full flex flex-col items-center justify-end absolute bottom-0 z-20 border-t border-zinc-400/30
             transition-colors background-transparent`}>
 
             <div className={`${minimize? "" : ""}
-                max-w-[1080px] w-full h-full relative
-                flex flex-col items-start justify-start z-10`}>
+                max-w-[1080px] w-full h-full relative border-x border-zinc-400/30
+                flex flex-col items-start justify-end z-10`}>
                 {!isMobile && <i className="bx bx-plus text-2xl absolute top-[-12] right-[-11] text-zinc-400/60" />}
 
                 <div className={`${isMobile? "text-sm" : "text-md"}
+                    ${isDark ? "text-[var(--light)]/40 bg-[var(--accent)]" : "text-[var(--dark)]/40 bg-[var(--light)]"}
                     w-full flex flex-row items-center justify-between border-b border-zinc-400/30 p-3`}>
                     <span className="flex items-center justify-center cursor-pointer hovered">Terminal</span>
                     <div className="flex flex-row items-center gap-3">   
@@ -59,10 +60,11 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
                 </div>
 
                 {!minimize && <div className={`${isMobile? "text-sm" : "text-md"}
+                    ${isDark ? "text-[var(--light)]/40 bg-[var(--accent)]" : "text-[var(--dark)]/40 bg-[var(--light)]"}
                     flex flex-col items-start justify-end flex-1 w-full`}>
 
                     <div ref={terminalRef} className="w-full flex flex-col items-start justify-start overflow-y-auto 
-                        py-3 max-h-[180px] min-h-[180px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                        py-2 max-h-[160px] min-h-[160px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                         {lines.map((line, index) => (
                             <p key={index} className="px-3 py-2">{line}</p>
                         ))}
