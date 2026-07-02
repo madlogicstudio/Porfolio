@@ -13,7 +13,7 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
 
     const isMobile = useIsMobile();
     const [command, setCommand] = useState("");
-    const [minimize, setMinimize] = useState(false);
+    const [minimize, setMinimize] = useState(true);
     const terminalRef = useRef<HTMLDivElement>(null);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -53,9 +53,12 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
                     w-full flex flex-row items-center justify-between border-b border-zinc-400/30 p-3`}>
                     <span className="flex items-center justify-center cursor-pointer hovered">Terminal</span>
                     <div className="flex flex-row items-center gap-3">   
-                        <i title="Minimize" className="bx bx-minus text-2xl text-[var(--primary)] cursor-pointer"
-                            onClick={() => setMinimize((prev) => !prev)} />
-                        <i title="New Terminal" className="bx bx-terminal text-3xl text-[var(--primary)] cursor-pointer"/>
+                        {!isMobile && <i title="Minimize/Maximize" className="bx bx-minus text-2xl text-[var(--primary)] cursor-pointer"
+                            onClick={() => setMinimize((prev) => !prev)} />}
+                        {isMobile && <i title="Minimize/Maximize" className="bx bx-minus text-xl text-[var(--primary)] cursor-pointer"
+                            onClick={() => setMinimize((prev) => !prev)} />}
+                        {!isMobile && <i title="New Terminal" className="bx bx-terminal text-3xl text-[var(--primary)] cursor-pointer"/>}
+                        {isMobile && <i title="New Terminal" className="bx bx-terminal text-2xl text-[var(--primary)] cursor-pointer"/>}
                     </div>   
                 </div>
 
@@ -79,7 +82,7 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
                     {isMobile && <div className="w-full flex flex-row items-center justify-between relative border-t border-zinc-400/30">
                         <input value={command} onKeyDown={handleKeyDown} onChange={(e) => setCommand(e.target.value)} 
                             type="text" placeholder=". . ." className="w-full outline-none p-3" />
-                        <i title="Enter" className="bx bx-chevron-right-square text-3xl text-[var(--primary)] cursor-pointer p-3" 
+                        <i title="Enter" className="bx bx-chevron-right-square text-2xl text-[var(--primary)] cursor-pointer p-3" 
                             onClick={submitCommand}/>
                     </div>}
                 </div>}
