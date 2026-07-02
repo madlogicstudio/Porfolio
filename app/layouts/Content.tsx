@@ -46,7 +46,7 @@ function Content({isDark}: ContentProps) {
     return (
         <div className={`${isDark ? "text-[var(--light)]/40" : "text-[var(--dark)]/40"}
             h-screen max-w-[1080px] w-full flex flex-col items-center justify-start border-x border-zinc-400/30
-            transition-colors absolute background-transparent top-0`}>
+            transition-colors absolute top-0 background-transparent`}>
             
             <div className="w-full p-5">
                 <span>&nbsp;</span>
@@ -58,17 +58,19 @@ function Content({isDark}: ContentProps) {
                     <Topnav />
                 </div>
                 
-                {!isMobile && <i className="bx bx-plus text-2xl absolute bottom-[-35] left-[-12] text-zinc-400/30" />}
+                {!isMobile && <i className="bx bx-plus text-2xl absolute bottom-[-26] left-[-12] text-zinc-400/60" />}
             </div>
             
-            <div className="w-full p-5">
+            <div className="w-full p-3">
                 <span>&nbsp;</span>
             </div>
 
-            <div className="h-[600px] w-[96%] flex flex-col items-center justify-center border border-zinc-400/30 gap-3">
+            <div className="w-full flex flex-col items-center justify-center">
 
-                {idle && <WanderingEyes className="h-16 w-[180px]" />}
-                {idle && <span className="text-md">{idleText}</span>}
+                {idle && <div className="h-[460px] w-full flex flex-col items-center justify-center gap-3">
+                    <WanderingEyes className="h-16 w-[180px]" />
+                    <span className={`${isMobile? "text-sm" : "text-md"}`}>{idleText}</span>
+                </div>}
 
             </div>
             
