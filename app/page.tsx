@@ -28,7 +28,7 @@ function page() {
         : 
         "text-[var(--dark)] bg-linear-to-b from-[var(--secondary)] to-[var(--light)]"
       }
-      h-screen w-full flex flex-col items-center justify-start cursor-crosshair`}>
+      h-screen w-full flex flex-col items-center justify-start cursor-crosshair overflow-hidden`}>
 
       <Header isDark={isDark} setIsDark={setIsDark}/>
 

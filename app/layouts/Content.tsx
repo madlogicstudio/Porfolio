@@ -79,22 +79,20 @@ function Content({isDark, idle, setIdle, bio, stack}: ContentProps) {
                 </div>}
 
                 {bio && !idle && !stack &&
-                    <div className={`${isMobile? "h-auto" : "h-[460px]"}
-                        w-full flex flex-col items-center justify-center gap-3 p-3 flex-wrap`}>
+                    <div className={`${isMobile? "h-auto items-start justify-start" : "h-[460px] items-center justify-center"}
+                        w-full flex flex-col gap-3 p-3 flex-wrap`}>
                         
                         <img src={Logo.src} className="h-12 w-12" alt="" />
 
-                        <span className="font-bold text-center">Hello, I'm Julius Mallorca Capispisan, Self-taught Designer and Entry-level React Developer.</span>
-                        <span className="text-center">
-                            I have hands on experience building responsive web and mobile applications using React, React Native, JavaScript, and TypeScript. 
-                            <br />Familiar with developing reusable UI components, integrating APIs, and working with Firebase for authentication and data management. 
-                            <br />Strong foundation in modern front-end development practices, version control with Git, and responsive design using CSS and Tailwind CSS. 
-                            <br />Passionate about creating intuitive user experiences, solving technical challenges, and continuously expanding technical skills <br />through 
-                            personal projects and learning opportunities.
+                        <span className="font-bold">Hello, I'm Julius Mallorca Capispisan, Self-taught Designer and Entry-level React Developer.</span>
+                        <span className={`${isMobile? "" : "text-center"}`}>
+                            I have hands on experience building responsive web and mobile applications using React, React Native, JavaScript, and TypeScript.  
+                            <br /><br />Passionate about creating intuitive user experiences, solving technical challenges, and continuously expanding technical skills 
+                            through personal projects and learning opportunities.
                         </span>
                         
-                        <span className="text-center">Excited to collaborate with you on intriguing projects — reach out at</span>
-                        <span className="underline text-center"> jutscapispisan@gmail.com</span>
+                        <span className="">Excited to collaborate with you on intriguing projects — reach out at</span>
+                        <span className="underline"> jutscapispisan@gmail.com</span>
 
                     </div>
                 }
