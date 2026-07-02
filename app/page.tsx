@@ -9,6 +9,9 @@ function page() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isDark, setIsDark] = useState(false);
+  const [idle, setIdle] = useState(true);
+  const [bio, setBio] = useState(false);
+  const [stack, setStack] = useState(false);
   const [lines, setLines] = useState<string[]>([
     "> Welcome to my Portfolio!",
     "> Type 'help' to see available commands.",
@@ -29,9 +32,9 @@ function page() {
 
       <Header isDark={isDark} setIsDark={setIsDark}/>
 
-      <Content isDark={isDark}/>
+      <Content isDark={isDark} idle={idle} setIdle={setIdle} bio={bio} stack={stack}/>
 
-      <Terminal isDark={isDark} lines={lines} setLines={setLines}/>
+      <Terminal isDark={isDark} lines={lines} setLines={setLines} setIdle={setIdle} setBio={setBio} setStack={setStack}/>
 
     </div>
   )

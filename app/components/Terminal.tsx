@@ -7,9 +7,12 @@ type TerminalProps = {
     isDark: boolean;
     lines: string[];
     setLines: React.Dispatch<React.SetStateAction<string[]>>;
+    setIdle: React.Dispatch<React.SetStateAction<boolean>>;
+    setBio: React.Dispatch<React.SetStateAction<boolean>>;
+    setStack: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
+export const Terminal = ({isDark, lines, setLines, setIdle, setBio, setStack}: TerminalProps) => {
 
     const isMobile = useIsMobile();
     const [command, setCommand] = useState("");
@@ -18,15 +21,56 @@ export const Terminal = ({isDark, lines, setLines}: TerminalProps) => {
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter" && command.trim()) {
-            setLines(prev => [...prev, `> ${command}`]);
-            setCommand("");
+            submitCommand();
         }
     };
 
     const submitCommand = () => {
         if (!command.trim()) return;
 
-        setLines(prev => [...prev, `> ${command}`]);
+        let output: string[] = [];
+
+        switch (command.toLowerCase()) {
+            case "help":
+                output = [
+                    "Available commands:",
+                    "--bio",
+                    "--tech stack",
+                    "--contact",
+                ];
+                break;
+            
+            case "--bio": 
+                setIdle(false);
+                setStack(false);
+                setBio(true);
+                output = [
+                    "Showing current bio . . .",
+                ];
+                break;
+
+            case "--tech stack":
+                setIdle(false);
+                setBio(false);
+                setStack(true);
+                output = [
+                    "Showing current tech stack . . .",
+                ];
+                break;
+
+            default:
+                setIdle(true);
+                setBio(false);
+                setStack(false);
+                output = [`Unknown command: ${command}`];
+        }
+
+        setLines(prev => [
+            ...prev,
+            `> ${command}`,
+            ...output,
+        ]);
+
         setCommand("");
     };
 
