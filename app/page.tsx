@@ -8,8 +8,9 @@ import { Terminal } from './components/Terminal';
 function page() {
 
   const [isLoading, setIsLoading] = useState(true);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [idle, setIdle] = useState(true);
+  const [start, setStart] = useState(false);
   const [bio, setBio] = useState(false);
   const [stack, setStack] = useState(false);
   const [lines, setLines] = useState<string[]>([
@@ -32,9 +33,9 @@ function page() {
 
       <Header isDark={isDark} setIsDark={setIsDark}/>
 
-      <Content isDark={isDark} idle={idle} setIdle={setIdle} bio={bio} stack={stack}/>
+      <Content isDark={isDark} idle={idle} setIdle={setIdle} bio={bio} stack={stack} start={start}/>
 
-      <Terminal isDark={isDark} lines={lines} setLines={setLines} setIdle={setIdle} setBio={setBio} setStack={setStack}/>
+      <Terminal isDark={isDark} lines={lines} setLines={setLines} setIdle={setIdle} setBio={setBio} setStack={setStack} setStart={setStart}/>
 
     </div>
   )

@@ -4,17 +4,19 @@ import { Topnav } from "../components/Topnav"
 import React, { useState, useEffect } from "react";
 import { WanderingEyes } from "../components/WanderingEyes";
 import { useIsMobile } from "../hooks/useIsMobile";
-import Logo from "../../public/Logo.png"
+import Profile from "../../public/Profile.png"
+import Screen from "./Screen";
 
 type ContentProps = {
     isDark: boolean;
     idle: boolean;
     setIdle: React.Dispatch<React.SetStateAction<boolean>>
+    start: boolean;
     bio: boolean;
     stack: boolean;
 }
 
-function Content({isDark, idle, setIdle, bio, stack}: ContentProps) {
+function Content({isDark, idle, setIdle, start, bio, stack}: ContentProps) {
 
     
     const isMobile = useIsMobile();
@@ -50,7 +52,7 @@ function Content({isDark, idle, setIdle, bio, stack}: ContentProps) {
 
     return (
         <div className={`${isDark ? "text-[var(--light)]/40 " : "text-[var(--dark)]/40"}
-        ${isMobile? "text-sm" : "etxt-md"}
+            ${isMobile? "text-sm" : "text-md"}
             h-screen max-w-[1080px] w-full flex flex-col items-center justify-start border-x border-zinc-400/30
             transition-colors absolute top-0 background-transparent`}>
             
@@ -66,28 +68,32 @@ function Content({isDark, idle, setIdle, bio, stack}: ContentProps) {
                 
                 {!isMobile && <i className="bx bx-plus text-2xl absolute bottom-[-26] left-[-12] text-zinc-400/60" />}
             </div>
-            
-            {!isMobile && <div className="w-full p-3">
-                <span>&nbsp;</span>
-            </div>}
+ 
 
-            <div className="w-full flex flex-col items-center justify-center">
+            <div className="h-full w-full flex flex-col items-center justify-center">
 
                 {idle && !bio && <div className="h-[460px] w-full flex flex-col items-center justify-center gap-3">
                     <WanderingEyes className="h-16 w-[180px]" />
                     <span className={`${isMobile? "text-sm" : "text-md"}`}>{idleText}</span>
+                    <span className={`${isMobile? "text-sm" : "text-md"}`}>{`{ Open the terminal to start }`}</span>
                 </div>}
 
+                {start && !idle && !bio && !stack && 
+
+                    <Screen isDark={isDark} start={start}/>
+
+                }
+
                 {bio && !idle && !stack &&
-                    <div className={`${isMobile? "h-auto items-start justify-start" : "h-[460px] items-center justify-center"}
+                    <div className={`${isMobile? "items-start justify-center" : "h-[460px] items-center justify-center"}
                         w-full flex flex-col gap-3 p-3 flex-wrap`}>
                         
-                        <img src={Logo.src} className="h-12 w-12" alt="" />
+                        <img src={Profile.src} className={`${isMobile? "h-24 w-24" : "h-32 w-32"} rounded-full`} alt="" />
 
-                        <span className="font-bold">Hello, I'm Julius Mallorca Capispisan, Self-taught Designer and Entry-level React Developer.</span>
+                        <span className={`${isMobile? "" : "text-center"} font-bold`}>Hello, I'm Julius Mallorca Capispisan, <br /> Self-taught Designer and Entry-level React Developer.</span>
                         <span className={`${isMobile? "" : "text-center"}`}>
-                            I have hands on experience building responsive web and mobile applications using React, React Native, JavaScript, and TypeScript.  
-                            <br /><br />Passionate about creating intuitive user experiences, solving technical challenges, and continuously expanding technical skills 
+                            I have hands on experience building responsive web and mobile applications using <br /> React, React Native, JavaScript, and TypeScript.  
+                            <br /><br />Passionate about creating intuitive user experiences, solving technical challenges, <br /> and continuously expanding technical skills 
                             through personal projects and learning opportunities.
                         </span>
                         
@@ -98,7 +104,7 @@ function Content({isDark, idle, setIdle, bio, stack}: ContentProps) {
                 }
 
                 {stack && !bio && !idle &&
-                    <div className={`${isMobile? "h-auto items-start justify-start" : "h-auto items-center justify-center"}
+                    <div className={`${isMobile? "items-start justify-start" : "h-auto items-center justify-center"}
                         w-full flex flex-col gap-3 p-3 flex-wrap overflow-y-auto hide-scrollbar`}>
                         
                         <span className={`${isMobile? "text-md" : "text-lg"}

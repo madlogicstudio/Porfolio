@@ -55,7 +55,7 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
 
             </div>}
 
-            {isMobile && <div className="max-w-[1080px] w-full flex flex-row items-center justify-between gap-3 py-2 px-1">
+            {isMobile && <div className="max-w-[1080px] w-full flex flex-row items-center justify-between gap-3 py-1 px-1">
 
                 <div className="flex-1 flex flex-row items-center justify-start gap-3">
                     <i title="Menu" className="bx bx-menu text-xl text-[var(--primary)] cursor-pointer" onClick={() => setIsOpen((prev) => !prev)}/>
@@ -83,11 +83,11 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                 flex flex-col items-start justify-start 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 
-                <div className="flex flex-row items-center justify-end w-full px-3 py-5 border-b border-zinc-400/30">           
+                <div className="flex flex-row items-center justify-end w-full px-3 py-4 border-b border-zinc-400/30">           
                     <i title="Close Menu" className="bx bx-x text-xl text-[var(--primary)] cursor-pointer" onClick={() => setIsOpen((prev) => !prev)}/>
                 </div>
 
-                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-3 gap-3">
+                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-2 gap-3">
                     <Theme 
                         lightIcon="bx bx-sun" 
                         darkIcon="bx bx-moon"
@@ -96,11 +96,11 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                     />
                 </div>
                 
-                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-5 gap-3">
+                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
                     <span className={`text-sm cursor-pointer`}>2026 Portfolio</span>
                 </div>
 
-                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-5 gap-3">
+                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
                     <div className="flex flex-row items-center gap-3">
                         <i title="Home" className="bx bx-home text-xl text-[var(--primary)] cursor-pointer" 
                             onClick={() => location.reload()}/>
@@ -108,7 +108,7 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-5 gap-3">
+                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
                     <div className="flex flex-row items-center gap-3">
                         <a href="https://docs.google.com/document/d/1pPF7MLGs83sfIrgVaNFr1RkL2WtEB5b0/edit?usp=sharing&ouid=116645608604521527431&rtpof=true&sd=true"
                         className="flex items-center justify-center">
@@ -118,7 +118,7 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-5">
+                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-4">
                     <div className="flex flex-row items-center gap-3">
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jutscapispisan@gmail.com" 
                         className="flex items-center justify-center">
@@ -128,21 +128,21 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-5">
+                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-4">
                     <div className="flex flex-row items-center gap-3">
                         <i title="Socials" className="bx bx-arrow-out-up-right-stroke-square text-xl text-[var(--primary)] cursor-pointer" />
                         <span className={`text-sm cursor-pointer`}>Redirect </span>
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-5">
+                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-4">
                     <a href="https://web.facebook.com/Juls.Caps" className="flex flex-row items-center gap-3">
                         <i title="Facebook" className="bxl bx-facebook-circle text-2xl text-[var(--primary)] cursor-pointer" />
                         <span className={`text-sm cursor-pointer`}>Facebook </span>
                     </a>
                 </div>
 
-                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-5">
+                <div className="flex flex-row items-center justify-between w-full border-b border-zinc-400/30 px-3 py-4">
                     <a href="https://github.com/madlogicstudio?tab=repositories" className="flex flex-row items-center gap-3">
                         <i title="Github" className="bxl bx-github text-2xl text-[var(--primary)] cursor-pointer" />
                         <span className={`text-sm cursor-pointer`}>Github </span>
