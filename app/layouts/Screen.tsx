@@ -153,9 +153,10 @@ function Screen({start, isDark}: ScreenProps) {
             ${isMobile? "text-sm mb-12" : "text-sm mt-4 mb-14"}
             h-full w-full flex flex-col items-center justify-start relative`}>
 
-            {refreshing && <div className={`${isDark ? "bg-[var(--accent)]" : "bg-[var(--secondary)]"}
+            {refreshing && <div className={`${isDark ? "bg-[var(--accent)]" : "bg-[var(--light)]"}
                 h-full w-full flex flex-col items-center justify-center`}>
-                <Bars className="h-8 w-12 text-[var(--dark)]/80" />
+                <Bars className={`${isDark ? "text-[var(--light)]/80" : "text-[var(--dark)]/80"}
+                    h-8 w-12`} />
             </div>}
 
             <div ref={screenRef} onContextMenu={handleContextMenu} onClick={handleClick}
