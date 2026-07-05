@@ -3,6 +3,7 @@
 import { useIsMobile } from "../hooks/useIsMobile"
 import { useState, useRef, useEffect } from "react"
 import { Blink } from "./Blink"
+import { useRouter } from 'next/navigation';
 
 type TerminalProps = {
     isDark: boolean;
@@ -11,12 +12,12 @@ type TerminalProps = {
     setIdle: React.Dispatch<React.SetStateAction<boolean>>;
     setStart: React.Dispatch<React.SetStateAction<boolean>>;
     setBio: React.Dispatch<React.SetStateAction<boolean>>;
-    setStack: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Terminal = ({isDark, lines, setLines, setIdle, setStart, setBio, setStack}: TerminalProps) => {
+export const Terminal = ({isDark, lines, setLines, setIdle, setStart, setBio}: TerminalProps) => {
 
     const isMobile = useIsMobile();
+    const router = useRouter();
     const [command, setCommand] = useState("");
     const [minimize, setMinimize] = useState(true);
     const terminalRef = useRef<HTMLDivElement>(null);
@@ -38,46 +39,36 @@ export const Terminal = ({isDark, lines, setLines, setIdle, setStart, setBio, se
                 output = [
                     "Available commands:",
                     "--start",
-                    "--bio",
-                    "--stack",
-                    "--contact",
+                    "--portfolio",
+                    "--quit",
                 ];
                 break;
 
             case "--start":
                 setStart(true);
                 setIdle(false);
-                setStack(false);
                 setBio(false);
                 output = [
                     "Device started . . .",
                 ];
                 break;
             
-            case "--bio": 
+            case "--portfolio": 
                 setIdle(false);
-                setStack(false);
                 setBio(true);
                 setStart(false);
                 output = [
-                    "Showing current bio . . .",
+                    "Showing current portfolio . . .",
                 ];
                 break;
 
-            case "--stack":
-                setIdle(false);
-                setBio(false);
-                setStack(true);
-                setStart(false);
-                output = [
-                    "Showing current tech stack . . .",
-                ];
+            case "--quit":
+                router.back();
                 break;
 
             default:
                 setIdle(true);
                 setBio(false);
-                setStack(false);
                 setStart(false);
                 output = [`Unknown command, type 'help' to see available commands.`];
         }

@@ -24,11 +24,9 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
             {!isMobile && <div className="max-w-[1080px] w-full flex flex-row items-center justify-between gap-3 px-3">
 
                 <div className="flex-1 flex flex-row items-center justify-start gap-4">
-                    <img title="Logo" src={Icon.src} className="h-8 w-8 m-[0.3em] cursor-pointer" alt="Icon" />
-                    <span title="2026 Portfolio" className={`text-md cursor-pointer`}>2026</span>
+                    <img title="Logo" src={Icon.src} className="h-8 w-8 m-[0.3em] cursor-pointer" alt="Icon" onClick={() => location.reload()} />
+                    <span title="2026 Portfolio" className={`text-md cursor-pointer`}>2026 Portfolio</span>
                     <div className="flex flex-row items-center justify-center gap-3">
-                        <i title="Home" className="bx bx-home text-2xl text-[var(--primary)] cursor-pointer" 
-                            onClick={() => location.reload()}/>
                         <a href="https://docs.google.com/document/d/1pPF7MLGs83sfIrgVaNFr1RkL2WtEB5b0/edit?usp=sharing&ouid=116645608604521527431&rtpof=true&sd=true"
                         className="flex items-center justify-center">
                             <i title="Downlaod Resume" className="bx bx-folder text-2xl text-[var(--primary)] cursor-pointer" />
@@ -59,8 +57,8 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
 
                 <div className="flex-1 flex flex-row items-center justify-start gap-3">
                     <i title="Menu" className="bx bx-menu text-xl text-[var(--primary)] cursor-pointer" onClick={() => setIsOpen((prev) => !prev)}/>
-                    <img title="Logo" src={Icon.src} className="h-7 w-7 cursor-pointer" alt="Icon" />
-                    <span title="2026 Portfolio" className={`text-sm cursor-pointer`}>2026</span>
+                    <img title="Logo" src={Icon.src} className="h-7 w-7 cursor-pointer" alt="Icon" onClick={() => location.reload()}/>
+                    <span title="2026 Portfolio" className={`text-sm cursor-pointer`}>2026 Portfolio</span>
                     
                 </div>
 
@@ -98,14 +96,6 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                 
                 <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
                     <span className={`text-sm cursor-pointer`}>2026 Portfolio</span>
-                </div>
-
-                <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
-                    <div className="flex flex-row items-center gap-3">
-                        <i title="Home" className="bx bx-home text-xl text-[var(--primary)] cursor-pointer" 
-                            onClick={() => location.reload()}/>
-                        <span className={`text-sm cursor-pointer`}>Home </span> 
-                    </div>
                 </div>
 
                 <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">

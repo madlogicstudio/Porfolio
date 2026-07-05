@@ -4,8 +4,9 @@ import { Topnav } from "../components/Topnav"
 import React, { useState, useEffect } from "react";
 import { WanderingEyes } from "../components/WanderingEyes";
 import { useIsMobile } from "../hooks/useIsMobile";
-import Profile from "../../public/Profile.png"
+import { Portfolio } from "../pages/Portfolio";
 import Screen from "./Screen";
+
 
 type ContentProps = {
     isDark: boolean;
@@ -13,10 +14,9 @@ type ContentProps = {
     setIdle: React.Dispatch<React.SetStateAction<boolean>>
     start: boolean;
     bio: boolean;
-    stack: boolean;
 }
 
-function Content({isDark, idle, setIdle, start, bio, stack}: ContentProps) {
+function Content({isDark, idle, setIdle, start, bio}: ContentProps) {
 
     
     const isMobile = useIsMobile();
@@ -70,40 +70,27 @@ function Content({isDark, idle, setIdle, start, bio, stack}: ContentProps) {
             </div>
  
 
-            <div className="h-full w-full flex flex-col items-center justify-center">
+            <div className="flex-1 w-full overflow-hidden">
 
-                {idle && !bio && <div className="h-[460px] w-full flex flex-col items-center justify-center gap-3">
-                    <WanderingEyes className="h-16 w-[180px]" />
-                    <span className={`${isMobile? "text-sm" : "text-md"}`}>{idleText}</span>
-                    <span className={`${isMobile? "text-sm" : "text-md"}`}>{`{ Open the terminal to start }`}</span>
+                {idle && !bio && <div className="h-full w-full flex flex-col items-center justify-center gap-3">
+
+                        <WanderingEyes className="h-16 w-[180px]" />
+                        <span className={`${isMobile? "text-sm" : "text-md"}`}>{idleText}</span>
+                        <span className={`${isMobile? "text-sm" : "text-md"}`}>{`{ Open the terminal to start }`}</span>
+                    
                 </div>}
 
-                {start && !idle && !bio && !stack && 
+                {start && !idle && !bio && 
 
                     <Screen isDark={isDark} start={start}/>
 
                 }
 
-                {bio && !idle && !stack &&
-                    <div className={`${isMobile? "items-start justify-center" : "h-[460px] items-center justify-center"}
-                        w-full flex flex-col gap-3 p-3 flex-wrap`}>
-                        
-                        <img src={Profile.src} className={`${isMobile? "h-24 w-24" : "h-32 w-32"} rounded-full`} alt="" />
+                {bio && !idle &&
+                    <Portfolio isDark={isDark} bio={bio}/>
+                }                
 
-                        <span className={`${isMobile? "" : "text-center"} font-bold`}>Hello, I'm Julius Mallorca Capispisan, <br /> Self-taught Designer and Entry-level React Developer.</span>
-                        <span className={`${isMobile? "" : "text-center"}`}>
-                            I have hands on experience building responsive web and mobile applications using <br /> React, React Native, JavaScript, and TypeScript.  
-                            <br /><br />Passionate about creating intuitive user experiences, solving technical challenges, <br /> and continuously expanding technical skills 
-                            through personal projects and learning opportunities.
-                        </span>
-                        
-                        <span className="">Excited to collaborate with you on intriguing projects — reach out at</span>
-                        <span className="underline"> jutscapispisan@gmail.com</span>
-
-                    </div>
-                }
-
-                {stack && !bio && !idle &&
+                {/* {!bio && !idle &&
                     <div className={`${isMobile? "items-start justify-start" : "h-auto items-center justify-center"}
                         w-full flex flex-col gap-3 p-3 flex-wrap overflow-y-auto hide-scrollbar`}>
                         
@@ -171,7 +158,7 @@ function Content({isDark, idle, setIdle, start, bio, stack}: ContentProps) {
                         </div>
 
                     </div>
-                }
+                } */}
 
 
             </div>

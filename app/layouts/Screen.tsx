@@ -2,7 +2,6 @@
 
 import { useIsMobile } from "../hooks/useIsMobile";
 import { useEffect, useState, useRef } from "react"
-import { ConveyorLoop } from "../components/Conveyor";
 import useFetchIcons from "../services/FetchIcons";
 import { addFolderIcon } from "../services/AddFolder";
 import { addTextDocument } from "../services/AddText";
@@ -130,18 +129,17 @@ function Screen({start, isDark}: ScreenProps) {
     };
 
     if(loading) return (
-        <div className="flex flex-col items-center justify-center gap-3">
+        <div className="h-full flex flex-col items-center justify-center gap-3">
             
             <div className="h-auto w-[240px] flex flex-col items-center justify-between border border-zinc-400/30">
-                <div className={`${isDark? "bg-[var(--primary)]" : "bg-[var(--secondary)]"}
+                <div className={`${isDark? "bg-[var(--primary)] text-[var(--light)]/40" : "bg-[var(--secondary)] text-[var(--dark)]/40"}
                     h-auto w-full px-3 py-2 flex flex-row items-center justify-between`}>
-                    <span className={`${isDark ? "text-[var(--light)] " : "text-[var(--dark)]"}`}>System</span>
-                    <i title="Cancel" className={`${isDark ? "text-[var(--light)] " : "text-[var(--dark)]"} bx bx-x text-xl cursor-pointer`} onClick={() => location.reload()}/>
+                    <span className={``}>System</span>
+                    <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => location.reload()}/>
                 </div>
                 <div className="h-full w-full flex flex-col items-center justify-center gap-3 p-6">
                     <span>{loadingText}</span>
-                    <Bars className="h-8 w-12 text-[var(--secondary)]/80" />
-                    {/* <ConveyorLoop trackLength={14} /> */}
+                    <Bars className="h-8 w-12" />
                 </div>
             </div>
 
