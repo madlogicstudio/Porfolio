@@ -32,7 +32,7 @@ function page() {
 
       <Header isDark={isDark} setIsDark={setIsDark}/>
 
-      <Content isDark={isDark} idle={idle} setIdle={setIdle} bio={bio} start={start}/>
+      <Content isDark={isDark} idle={idle} setIdle={setIdle} bio={bio} start={start} setStart={setStart}/>
 
       <Terminal isDark={isDark} lines={lines} setLines={setLines} setIdle={setIdle} setBio={setBio} setStart={setStart}/>
 

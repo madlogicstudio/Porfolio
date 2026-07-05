@@ -6,7 +6,9 @@ export type DesktopIcon = {
   id: string;
   name: string;
   icon: string;
+  content?: string;
   createdAt: any;
+  updatedAt?: any;
 };
 
 export default function useFetchIcons() {

@@ -13,10 +13,11 @@ type ContentProps = {
     idle: boolean;
     setIdle: React.Dispatch<React.SetStateAction<boolean>>
     start: boolean;
+    setStart: React.Dispatch<React.SetStateAction<boolean>>;
     bio: boolean;
 }
 
-function Content({isDark, idle, setIdle, start, bio}: ContentProps) {
+function Content({isDark, idle, setIdle, start, setStart, bio}: ContentProps) {
 
     
     const isMobile = useIsMobile();
@@ -76,90 +77,19 @@ function Content({isDark, idle, setIdle, start, bio}: ContentProps) {
 
                         <WanderingEyes className="h-16 w-[180px]" />
                         <span className={`${isMobile? "text-sm" : "text-md"}`}>{idleText}</span>
-                        <span className={`${isMobile? "text-sm" : "text-md"}`}>{`{ Open the terminal to start }`}</span>
+                        <span className={`${isMobile? "text-sm" : "text-md"}`}>{`{ Open the terminal and type help }`}</span>
                     
                 </div>}
 
                 {start && !idle && !bio && 
-
-                    <Screen isDark={isDark} start={start}/>
+                    
+                    <Screen isDark={isDark} start={start} setStart={setStart}/>
 
                 }
 
                 {bio && !idle &&
                     <Portfolio isDark={isDark} bio={bio}/>
                 }                
-
-                {/* {!bio && !idle &&
-                    <div className={`${isMobile? "items-start justify-start" : "h-auto items-center justify-center"}
-                        w-full flex flex-col gap-3 p-3 flex-wrap overflow-y-auto hide-scrollbar`}>
-                        
-                        <span className={`${isMobile? "text-md" : "text-lg"}
-                            font-bold py-3`}>Here is the current stack I am using in 2026</span>
-
-                        <div className="flex flex-col items-start justify-start gap-3">  
-
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Next.js" className="bxl bx-next-js text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://nextjs.org/" className="cursor-pointer underline">Next.js</a>
-                                <span> - Full-stack framework</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Tailwind CSS" className="bxl bx-tailwind-css text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://tailwindcss.com/" className="cursor-pointer underline">Tailwind CSS</a>
-                                <span> - Styling system</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Shadcn" className="bxl bx-shadcn-ui text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://ui.shadcn.com/" className="cursor-pointer underline">Shadcn/ui</a>
-                                <span> - UI components</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Boxicons" className="bxl bx-boxicons text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://boxicons.com/" className="cursor-pointer underline">Boxicons</a>
-                                <span> - Icon set</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Geist Font" className="bxf bx-quote-left text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://vercel.com/font" className="cursor-pointer underline">Geist Sans</a>
-                                <span> - Typography</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Vercel" className="bxl bx-vercel text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://vercel.com" className="cursor-pointer underline">Vercel</a>
-                                <span> - Hosting and deployment</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Firebase" className="bxl bx-firebase text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase</a>
-                                <span> - Backend-as-a-Service (BaaS)</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Firebase Auth" className="bxf bx-lock-keyhole text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase Auth</a>
-                                <span> - User authentication</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Cloud Firestore" className="bxf bx-database text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/docs/firestore" className="cursor-pointer underline">Cloud Firestore</a>
-                                <span> - NoSQL database</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Git" className="bxl bx-git text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://git-scm.com/" className="cursor-pointer underline">Git</a>
-                                <span> - Version control</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Github" className="bxl bx-github text-[calc(0.5vw+1.5rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://github.com/" className="cursor-pointer underline">Github</a>
-                                <span> - Code hosting and collaboration</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                } */}
-
 
             </div>
             

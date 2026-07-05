@@ -7,6 +7,7 @@ import Dark from "../../public/Portfolio_dark.png"
 import { useEffect, useState } from "react"
 import { Bars } from "../components/Bars";
 import { FolderCard } from "../components/FolderCard"
+import { motion } from "motion/react"
 
 type PortfolioProps = {
     isDark: boolean;
@@ -25,6 +26,7 @@ export const Portfolio = ({isDark, bio}: PortfolioProps) => {
     const [loadingText, setLoadingText] = useState(textArr[0]);
     const [openAbout, setOpenAbout] = useState(false);
     const [openStack, setOpenStack] = useState(false);
+    const [openContact, setOpenContact] = useState(false);
 
     useEffect(() => {
             if (!bio) return;
@@ -49,7 +51,7 @@ export const Portfolio = ({isDark, bio}: PortfolioProps) => {
         <div className="h-full flex flex-col items-center justify-center gap-3">
             
             <div className="h-auto w-[240px] flex flex-col items-center justify-between border border-zinc-400/30">
-                <div className={`${isDark? "bg-[var(--primary)] text-[var(--light)]/40" : "bg-[var(--secondary)] text-[var(--dark)]/40"}
+                <div className={`${isDark? "bg-[var(--primary)] text-[var(--light)]/60" : "bg-[var(--secondary)] text-[var(--dark)]/40"}
                     h-auto w-full px-3 py-2 flex flex-row items-center justify-between`}>
                     <span className={``}>System</span>
                     <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => location.reload()}/>
@@ -84,7 +86,7 @@ export const Portfolio = ({isDark, bio}: PortfolioProps) => {
                     
                     <div className={`${isDark? "bg-[var(--accent)]" : "bg-[var(--secondary)]"}
                         ${isMobile? "w-[180px] text-sm p-3" : "text-md p-6 h-[240px] w-[240px]"}
-                        flex flex-col items-center gap-3 absolute bottom-[-12] shadow-xl z-20`}>
+                        flex flex-col items-center gap-3 absolute bottom-[-12] shadow-xl z-20 border border-zinc-400/10`}>
                         <div className="w-full px-6 flex flex-col items-center justify-center">
                             {!isMobile && <img src={Profile.src} className="h-32 w-32 rounded-full" alt="" />}
                             {isMobile && <img src={Profile.src} className="h-24 w-24 rounded-full" alt="" />}
@@ -113,117 +115,158 @@ export const Portfolio = ({isDark, bio}: PortfolioProps) => {
                     </>}
                     folderName="Stacks"/>
                 <FolderCard isDark={isDark} arrow={<>
-                    {!isMobile && <i className="bx bx-arrow-down-right text-2xl text-[color:var(--primary)] cursor-pointer" />}
-                    {isMobile && <i className="bx bx-arrow-down-right text-xl text-[color:var(--primary)] cursor-pointer" />}
+                    {!isMobile && <i className="bx bx-arrow-down-right text-2xl text-[color:var(--primary)] cursor-pointer" onClick={() => setOpenContact((prev) => !prev)}/>}
+                    {isMobile && <i className="bx bx-arrow-down-right text-xl text-[color:var(--primary)] cursor-pointer" onClick={() => setOpenContact((prev) => !prev)}/>}
                 </>}
                 folderName="Contact"/>
                 
             </div>
 
             {openAbout && <div className={`bg-[rgba(0,0,0,0.3)] h-screen w-full absolute top-0 left-0 z-30 flex flex-col items-center justify-start p-3`}>
-                <div className={`${isMobile? "h-auto w-[340px]" : "h-auto w-[600px]"}
-                    flex flex-col items-center justify-start bg-[var(--secondary)] shadow-xl`}>
 
-                    <div className={`text-[var(--light)]/80 w-full bg-[var(--primary)] p-3 flex flex-row items-center justify-between`}>
-                        <span className="">About</span>
-                        <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => setOpenAbout((prev) => !prev)}/>
+                <motion.div drag dragConstraints={{ left: 0, right: 200, top: 0, bottom: 200}}>
+                    <div className={`${isMobile? "h-auto w-[340px]" : "h-auto w-[600px]"}
+                        flex flex-col items-center justify-start bg-[var(--secondary)] shadow-xl`}>
+
+                        <div className={`text-[var(--light)]/80 w-full bg-[var(--primary)] p-3 flex flex-row items-center justify-between`}>
+                            <span className="">About</span>
+                            <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => setOpenAbout((prev) => !prev)}/>
+                        </div>
+
+                        <div className="h-full w-full flex flex-col items-center justify-center p-6 gap-3 text-[var(--dark)]/60">
+                            <div className="w-full flex flex-row items-end justify-start gap-2 mb-3">
+                                <span className="text-2xl font-bold">WHO</span>
+                                <span>am i?</span>
+                            </div>
+                            <span className="">
+                                <span className="text-2xl">Hello! </span> I’m <span className="font-bold">Julius Capispisan</span>, a <span className="text-[var(--primary)]">React Developer</span>. I enjoy turning ideas into clean, responsive, and user-friendly web experiences.
+                            </span>
+                            <span>
+                                My journey into development began with a curiosity about how websites work, which gradually grew into a passion for building them. 
+                                Through personal projects and continuous learning, I've gained hands-on experience with React, Next.js, React Native, JavaScript, TypeScript, Tailwind CSS, and Firebase.
+                            </span>
+                            <span>
+                                I enjoy creating interfaces that are both functional and visually appealing, with a focus on writing clean, maintainable code and delivering a smooth user experience. 
+                                Every project is an opportunity to improve my skills, experiment with new technologies, and solve real-world problems.
+                            </span>
+                            <span>
+                                I'm currently seeking opportunities where I can contribute, grow as a developer, and collaborate with people who are passionate about building meaningful digital products.
+                            </span>
+                        </div>
+ 
                     </div>
-
-                    <div className="h-full w-full flex flex-col items-center justify-center p-6 gap-3 text-[var(--dark)]/60">
-                        <span className="">
-                            <span className="text-2xl">Hello! </span> I’m <span className="font-bold">Julius Capispisan</span>, a <span className="text-[var(--primary)]">React Developer</span>. I enjoy turning ideas into clean, responsive, and user-friendly web experiences.
-                        </span>
-                        <span>
-                            My journey into development began with a curiosity about how websites work, which gradually grew into a passion for building them. 
-                            Through personal projects and continuous learning, I've gained hands-on experience with React, Next.js, React Native, JavaScript, TypeScript, Tailwind CSS, and Firebase.
-                        </span>
-                        <span>
-                            I enjoy creating interfaces that are both functional and visually appealing, with a focus on writing clean, maintainable code and delivering a smooth user experience. 
-                            Every project is an opportunity to improve my skills, experiment with new technologies, and solve real-world problems.
-                        </span>
-                        <span>
-                            I'm currently seeking opportunities where I can contribute, grow as a developer, and collaborate with people who are passionate about building meaningful digital products.
-                        </span>
-                        <span className="w-full">Reach out at <span className="underline text-[var(--primary)] cursor-pointer">@jutscapispisan@gmail.com</span></span>
-                    </div>
-
-                </div>
+                </motion.div>
             </div>}
 
             {openStack && <div className={`bg-[rgba(0,0,0,0.3)] h-screen w-full absolute top-0 left-0 z-30 flex flex-col items-center justify-start p-3`}>
-                <div className={`${isMobile? "h-auto w-[340px]" : "h-auto w-[600px]"}
-                    flex flex-col items-center justify-start bg-[var(--secondary)] shadow-xl`}>
 
-                    <div className={`text-[var(--light)]/80 w-full bg-[var(--primary)] p-3 flex flex-row items-center justify-between`}>
-                        <span className="">Stack</span>
-                        <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => setOpenStack((prev) => !prev)}/>
-                    </div>
+                <motion.div drag dragConstraints={{ left: 0, right: 200, top: 0, bottom: 200}}>
+                    <div className={`${isMobile? "h-auto w-[340px]" : "h-auto w-[600px]"}
+                        flex flex-col items-center justify-start bg-[var(--secondary)] shadow-xl`}>
 
-                    <div className="h-full w-full flex flex-col items-start justify-center p-6 gap-3 text-[var(--accent)]/60">
-                        <span className={`font-semibold pb-3`}>Here is the current stack I am using in 2026</span>
-                            
-                        <div className="flex flex-col items-start justify-start gap-3">  
-
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Next.js" className="bxl bx-next-js text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://nextjs.org/" className="cursor-pointer underline">Next.js</a>
-                                <span> - Full-stack framework</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Tailwind CSS" className="bxl bx-tailwind-css text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://tailwindcss.com/" className="cursor-pointer underline">Tailwind CSS</a>
-                                <span> - Styling system</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Shadcn" className="bxl bx-shadcn-ui text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://ui.shadcn.com/" className="cursor-pointer underline">Shadcn/ui</a>
-                                <span> - UI components</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Boxicons" className="bxl bx-boxicons text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://boxicons.com/" className="cursor-pointer underline">Boxicons</a>
-                                <span> - Icon set</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Geist Font" className="bxf bx-quote-left text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://vercel.com/font" className="cursor-pointer underline">Geist Sans</a>
-                                <span> - Typography</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Vercel" className="bxl bx-vercel text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://vercel.com" className="cursor-pointer underline">Vercel</a>
-                                <span> - Hosting and deployment</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Firebase" className="bxl bx-firebase text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase</a>
-                                <span> - Backend-as-a-Service (BaaS)</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Firebase Auth" className="bxf bx-lock-keyhole text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase Auth</a>
-                                <span> - User authentication</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Cloud Firestore" className="bxf bx-database text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://firebase.google.com/docs/firestore" className="cursor-pointer underline">Cloud Firestore</a>
-                                <span> - NoSQL database</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Git" className="bxl bx-git text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://git-scm.com/" className="cursor-pointer underline">Git</a>
-                                <span> - Version control</span>
-                            </div>
-                            <div className="flex flex-row items-center gap-3">
-                                <i title="Github" className="bxl bx-github text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
-                                <a href="https://github.com/" className="cursor-pointer underline">Github</a>
-                                <span> - Code hosting and collaboration</span>
-                            </div>
-
+                        <div className={`text-[var(--light)]/80 w-full bg-[var(--primary)] p-3 flex flex-row items-center justify-between`}>
+                            <span className="">Stack</span>
+                            <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => setOpenStack((prev) => !prev)}/>
                         </div>
-                    </div>
 
-                </div>
+                        <div className="h-full w-full flex flex-col items-start justify-center p-6 gap-3 text-[var(--accent)]/60">
+                            <span className={`mb-3`}>Here is the current <span className="text-2xl font-bold">STACK</span> I'm using in 2026</span>
+                                
+                            <div className="flex flex-col items-start justify-start gap-3">  
+
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Next.js" className="bxl bx-next-js text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://nextjs.org/" className="cursor-pointer underline">Next.js</a>
+                                    <span> - Full-stack framework</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Tailwind CSS" className="bxl bx-tailwind-css text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://tailwindcss.com/" className="cursor-pointer underline">Tailwind CSS</a>
+                                    <span> - Styling system</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Shadcn" className="bxl bx-shadcn-ui text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://ui.shadcn.com/" className="cursor-pointer underline">Shadcn/ui</a>
+                                    <span> - UI components</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Boxicons" className="bxl bx-boxicons text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://boxicons.com/" className="cursor-pointer underline">Boxicons</a>
+                                    <span> - Icon set</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Geist Font" className="bxf bx-quote-left text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://vercel.com/font" className="cursor-pointer underline">Geist Sans</a>
+                                    <span> - Typography</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Vercel" className="bxl bx-vercel text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://vercel.com" className="cursor-pointer underline">Vercel</a>
+                                    <span> - Hosting and deployment</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Firebase" className="bxl bx-firebase text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase</a>
+                                    <span> - Backend-as-a-Service (BaaS)</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Firebase Auth" className="bxf bx-lock-keyhole text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://firebase.google.com/" className="cursor-pointer underline">Firebase Auth</a>
+                                    <span> - User authentication</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Cloud Firestore" className="bxf bx-database text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://firebase.google.com/docs/firestore" className="cursor-pointer underline">Cloud Firestore</a>
+                                    <span> - NoSQL database</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Git" className="bxl bx-git text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://git-scm.com/" className="cursor-pointer underline">Git</a>
+                                    <span> - Version control</span>
+                                </div>
+                                <div className="flex flex-row items-center gap-3">
+                                    <i title="Github" className="bxl bx-github text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                    <a href="https://github.com/" className="cursor-pointer underline">Github</a>
+                                    <span> - Code hosting and collaboration</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </motion.div>
+            </div>}
+
+            {openContact && <div className={`bg-[rgba(0,0,0,0.3)] h-screen w-full absolute top-0 left-0 z-30 flex flex-col items-center justify-start p-3`}>
+
+                <motion.div drag dragConstraints={{ left: 0, right: 200, top: 0, bottom: 200}}>
+                    <div className={`${isMobile? "h-auto w-[340px]" : "h-auto w-[600px]"}
+                        flex flex-col items-center justify-start bg-[var(--secondary)] shadow-xl`}>
+
+                        <div className={`text-[var(--light)]/80 w-full bg-[var(--primary)] p-3 flex flex-row items-center justify-between`}>
+                            <span className="">Contact</span>
+                            <i title="Cancel" className={` bx bx-x text-xl cursor-pointer`} onClick={() => setOpenContact((prev) => !prev)}/>
+                        </div>
+
+                        <div className="h-full w-full flex flex-col items-center justify-center p-6 gap-3 text-[var(--dark)]/60">
+                            <span className="w-full mb-3">Get in <span className="w-full text-2xl font-bold">TOUCH</span></span>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jutscapispisan@gmail.com" 
+                                className="w-full flex items-center justify-start gap-2">
+                                <i title="Email" className="bx bx-envelope text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                <span className="cursor-pointer">@jutscapispisan@gmail.com</span>
+                            </a>
+                            <div className="w-full flex flex-row items-center gap-3">
+                                <i className="bx bx-phone text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                <span className="cursor-pointer">+639936709952</span>
+                            </div>
+                            <a href="https://web.facebook.com/Juls.Caps" className="w-full flex flex-row items-center justify-start gap-2">
+                                <i title="Facebook" className="bxl bx-facebook-circle text-[calc(0.5vw+1.4rem)] text-[var(--primary)] cursor-pointer" />
+                                <span className={`text-sm cursor-pointer`}>https://web.facebook.com/Juls.Caps</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </motion.div>
             </div>}
 
         </div>
