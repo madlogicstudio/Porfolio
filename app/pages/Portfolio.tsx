@@ -263,6 +263,10 @@ export const Portfolio = ({isDark, bio}: PortfolioProps) => {
                                 <i title="Facebook" className="bxl bx-facebook-circle text-[calc(0.5vw+1.4rem)] text-[var(--primary)] cursor-pointer" />
                                 <span className={`text-sm cursor-pointer`}>https://web.facebook.com/Juls.Caps</span>
                             </a>
+                            <div className="w-full flex flex-row items-center gap-3">
+                                <i className="bx bx-location text-[calc(0.5vw+1.2rem)] text-[var(--primary)] cursor-pointer" />
+                                <span className="cursor-pointer">#661 Acacia St. Napico Manggahan Pasig City</span>
+                            </div>
                         </div>
 
                     </div>

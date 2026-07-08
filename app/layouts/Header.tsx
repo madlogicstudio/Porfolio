@@ -27,7 +27,7 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
                     <img title="Logo" src={Icon.src} className="h-8 w-8 m-[0.3em] cursor-pointer" alt="Icon" onClick={() => location.reload()} />
                     <span title="2026 Portfolio" className={`text-md cursor-pointer`}>2026 Portfolio</span>
                     <div className="flex flex-row items-center justify-center gap-3">
-                        <a href="https://docs.google.com/document/d/1pPF7MLGs83sfIrgVaNFr1RkL2WtEB5b0/edit?usp=sharing&ouid=116645608604521527431&rtpof=true&sd=true"
+                        <a href="https://drive.google.com/file/d/1HsT8f7ss_VAka1DO1gDhHCrng4XIO4vd/view?usp=sharing"
                         className="flex items-center justify-center">
                             <i title="Downlaod Resume" className="bx bx-folder text-2xl text-[var(--primary)] cursor-pointer" />
                         </a>       
@@ -100,7 +100,7 @@ export const Header = ({isDark, setIsDark}: HeaderProps) => {
 
                 <div className="flex flex-row items-center justify-start w-full border-b border-zinc-400/30 px-3 py-4 gap-3">
                     <div className="flex flex-row items-center gap-3">
-                        <a href="https://docs.google.com/document/d/1pPF7MLGs83sfIrgVaNFr1RkL2WtEB5b0/edit?usp=sharing&ouid=116645608604521527431&rtpof=true&sd=true"
+                        <a href="https://drive.google.com/file/d/1HsT8f7ss_VAka1DO1gDhHCrng4XIO4vd/view?usp=sharing"
                         className="flex items-center justify-center">
                             <i title="Downlaod Resume" className="bx bx-folder text-xl text-[var(--primary)] cursor-pointer" />
                         </a>       
